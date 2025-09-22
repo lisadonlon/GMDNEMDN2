@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { SecondaryCode, EmdnCode } from '../types';
+import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 
 interface GmdnDetailProps {
   gmdnCode: SecondaryCode | null;
@@ -43,6 +45,53 @@ const GmdnDetail: React.FC<GmdnDetailProps> = ({ gmdnCode, allEmdnCodes, onSelec
         <p className="text-slate-300 mt-1">{gmdnCode.description}</p>
       </div>
       
+      <DetailSection title="External Resources">
+        <p className="text-xs text-slate-400 mb-2">
+            Search for devices using this GMDN term on various international regulatory databases.
+        </p>
+        <ul className="list-none pl-0 space-y-2">
+            <li className="p-2 bg-slate-700/50 rounded-md flex items-center justify-between gap-4">
+                <span className="font-semibold text-slate-200">GMDN Agency</span>
+                <a 
+                    href={`https://www.gmdnagency.org/terms/search?query=${encodeURIComponent(gmdnCode.description)}`}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-1.5 text-xs text-slate-400 hover:text-sky-400 transition-colors"
+                    aria-label={`Search for ${gmdnCode.description} on GMDN Agency`}
+                >
+                    <span>Search Term</span>
+                    <ExternalLinkIcon className="w-3.5 h-3.5" />
+                </a>
+            </li>
+            <li className="p-2 bg-slate-700/50 rounded-md flex items-center justify-between gap-4">
+                <span className="font-semibold text-slate-200">FDA GUDID (USA)</span>
+                <a 
+                    href={`https://accessgudid.fda.gov/devices/search?query=${encodeURIComponent(gmdnCode.description)}`}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-1.5 text-xs text-slate-400 hover:text-sky-400 transition-colors"
+                    aria-label={`Search for ${gmdnCode.description} on FDA GUDID (USA)`}
+                >
+                    <span>Search Term</span>
+                    <ExternalLinkIcon className="w-3.5 h-3.5" />
+                </a>
+            </li>
+            <li className="p-2 bg-slate-700/50 rounded-md flex items-center justify-between gap-4">
+                <span className="font-semibold text-slate-200">TGA ARTG (Australia)</span>
+                <a 
+                    href={`https://www.tga.gov.au/resources/artg?search_api_views_fulltext=${encodeURIComponent(gmdnCode.description)}`}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-1.5 text-xs text-slate-400 hover:text-sky-400 transition-colors"
+                    aria-label={`Search for ${gmdnCode.description} on TGA ARTG (Australia)`}
+                >
+                    <span>Search Term</span>
+                    <ExternalLinkIcon className="w-3.5 h-3.5" />
+                </a>
+            </li>
+        </ul>
+      </DetailSection>
+
       <DetailSection title="Related EMDN Codes">
         {relatedEmdn.length > 0 ? (
           <ul className="list-none pl-0 space-y-2">

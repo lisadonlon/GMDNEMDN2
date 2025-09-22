@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { EmdnCode, SecondaryCode } from '../types';
 import EudamedSearch from './EudamedSearch';
@@ -74,6 +75,10 @@ const EmdnDetail: React.FC<EmdnDetailProps> = ({ code, allCodes, gmdnCodes, opsC
       <div className="mb-4">
         <h2 className="text-3xl font-bold text-white font-mono">{code.code}</h2>
         <p className="text-slate-300 mt-1">{code.description}</p>
+        <a href="https://health.ec.europa.eu/medical-devices-sector/new-regulations/eudamed-new-regulations/european-medical-device-nomenclature-emdn_en" target="_blank" rel="noopener noreferrer" className="text-xs text-sky-400 hover:underline inline-flex items-center space-x-1 mt-2">
+            <span>Learn more about EMDN at the source</span>
+            <ExternalLinkIcon className="w-3 h-3" />
+        </a>
       </div>
 
       <DetailSection title="Hierarchy">

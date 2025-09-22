@@ -17,8 +17,9 @@ import EmdnList from './components/EmdnList';
 import EmdnDetail from './components/EmdnDetail';
 import GmdnList from './components/GmdnList';
 import GmdnDetail from './components/GmdnDetail';
+import AiAssistant from './components/AiAssistant';
 
-type View = 'countries' | 'emdn' | 'gmdn';
+type View = 'countries' | 'emdn' | 'gmdn' | 'ai';
 
 const App: React.FC = () => {
   const [view, setView] = useState<View>('countries');
@@ -116,9 +117,9 @@ const App: React.FC = () => {
   const handleViewChange = (newView: View) => {
     setView(newView);
     // Reset selections when switching views for a cleaner experience
-    setSelectedCountryId(newView === 'countries' ? 'germany' : null);
-    setSelectedEmdnCode(null);
-    setSelectedGmdnCode(null);
+    if (newView === 'countries' && !selectedCountryId) {
+      setSelectedCountryId('germany');
+    }
   }
   
   const handleGmdnSelectEmdn = (emdnCode: string) => {
@@ -219,20 +220,30 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-slate-900 text-white font-sans">
       <Header />
       <main className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          
-          <div className="md:col-span-1 lg:col-span-1 h-[calc(100vh-120px)] flex flex-col">
-            <ViewSwitcher currentView={view} onViewChange={handleViewChange} />
-            <div className="mt-4 flex-grow flex flex-col">
+        <ViewSwitcher currentView={view} onViewChange={handleViewChange} />
+        
+        {view === 'ai' ? (
+          <div className="mt-6">
+            <AiAssistant 
+              countryData={countryData}
+              emdnData={emdnData}
+              gmdnData={gmdnData}
+              opsData={opsData}
+              lpprData={lpprData}
+              ccamData={ccamData}
+              icd10cyData={icd10cyData}
+            />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+            <div className="md:col-span-1 lg:col-span-1 h-[calc(100vh-180px)] flex flex-col">
               {renderLeftPanel()}
             </div>
+            <div className="md:col-span-2 lg:col-span-3 h-[calc(100vh-180px)] overflow-y-auto bg-slate-800 rounded-lg shadow-lg p-6">
+               {renderRightPanel()}
+            </div>
           </div>
-
-          <div className="md:col-span-2 lg:col-span-3 h-[calc(100vh-120px)] overflow-y-auto bg-slate-800 rounded-lg shadow-lg p-6">
-             {renderRightPanel()}
-          </div>
-
-        </div>
+        )}
       </main>
     </div>
   );
