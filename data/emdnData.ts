@@ -1,0 +1,38 @@
+import { EmdnCode } from '../types';
+
+export const emdnData: EmdnCode[] = [
+  { code: 'A', description: 'DEVICES FOR ANAESTHESIA AND RESPIRATION' },
+  { code: 'A01', description: 'Anaesthesia systems and dedicated components', parentCode: 'A' },
+  { code: 'A0101', description: 'Anaesthesia workstations and ventilators', parentCode: 'A01' },
+  { code: 'A010101', description: 'Anaesthesia workstations', parentCode: 'A0101' },
+  { code: 'A010102', description: 'Anaesthesia ventilators', parentCode: 'A0101' },
+  { code: 'A0102', description: 'Anaesthesia breathing systems and components', parentCode: 'A01' },
+  { code: 'A010201', description: 'Anaesthesia breathing circuits', parentCode: 'A0102' },
+  { code: 'A02', description: 'Respiratory therapy and resuscitation equipment', parentCode: 'A' },
+  { code: 'A0201', description: 'Ventilators for intensive care', parentCode: 'A02' },
+  { code: 'A020101', description: 'Invasive ventilators for intensive care', parentCode: 'A0201' },
+  { code: 'A020102', description: 'Non-invasive ventilators for intensive care', parentCode: 'A0201' },
+  { code: 'A0202', description: 'Resuscitators', parentCode: 'A02' },
+  { code: 'A020201', description: 'Manual resuscitators', parentCode: 'A0202' },
+
+  { code: 'C', description: 'DEVICES FOR CARDIOLOGY AND ANGIOLOGY' },
+  { code: 'C01', description: 'Cardiac rhythm management devices', parentCode: 'C' },
+  { code: 'C0101', description: 'Implantable pacemakers and leads', parentCode: 'C01' },
+  { code: 'C010101', description: 'Implantable pacemakers', parentCode: 'C0101' },
+  { code: 'C010102', description: 'Pacemaker leads', parentCode: 'C0101' },
+  { code: 'C02', description: 'Interventional cardiology devices', parentCode: 'C' },
+  { code: 'C0201', description: 'Coronary stents and catheters', parentCode: 'C02' },
+  { code: 'C020101', description: 'Drug-eluting coronary stents', parentCode: 'C0201' },
+  { code: 'C020102', description: 'Bare-metal coronary stents', parentCode: 'C0201' },
+  { code: 'C020103', description: 'Balloon catheters for coronary angioplasty', parentCode: 'C0201' },
+
+  { code: 'G', description: 'DEVICES FOR GASTROENTEROLOGY AND HEPATOLOGY' },
+  { code: 'G01', description: 'Endoscopes and accessories for gastroenterology', parentCode: 'G' },
+  { code: 'G0101', description: 'Gastroscopes', parentCode: 'G01' },
+  { code: 'G010101', description: 'Flexible video gastroscopes', parentCode: 'G0101' },
+  { code: 'G0102', description: 'Colonoscopes', parentCode: 'G01' },
+  { code: 'G010201', description: 'Flexible video colonoscopes', parentCode: 'G0102' },
+  { code: 'G02', description: 'Ostomy care devices', parentCode: 'G' },
+  { code: 'G0201', description: 'Ostomy bags and pouches', parentCode: 'G02' },
+  { code: 'G020101', description: 'One-piece ostomy systems', parentCode: 'G0201' },
+];
